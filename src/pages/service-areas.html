@@ -1,0 +1,159 @@
+---
+{
+  "path": "/service-areas/",
+  "title": "Service Areas | Mobile Dog & Cat Grooming in Greater Vancouver | Pawgo",
+  "description": "Pawgo Mobile Grooming serves 15 Greater Vancouver cities: Vancouver, Burnaby, Coquitlam, Surrey, Richmond, Langley, North Vancouver, Delta, White Rock and more.",
+  "schemas": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Mobile pet grooming service area",
+      "name": "Mobile pet grooming across Greater Vancouver",
+      "description": "Pawgo Mobile Grooming travels to Vancouver, Burnaby, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Langley, North Vancouver, West Vancouver, Richmond, Delta, Maple Ridge, Pitt Meadows and White Rock.",
+      "url": "https://pawgomobilegrooming.com/service-areas/",
+      "provider": { "@id": "https://pawgomobilegrooming.com/#business" },
+      "areaServed": [
+        { "@type": "City", "name": "Vancouver" },
+        { "@type": "City", "name": "Burnaby" },
+        { "@type": "City", "name": "Coquitlam" },
+        { "@type": "City", "name": "Port Coquitlam" },
+        { "@type": "City", "name": "Port Moody" },
+        { "@type": "City", "name": "New Westminster" },
+        { "@type": "City", "name": "Surrey" },
+        { "@type": "City", "name": "Langley" },
+        { "@type": "City", "name": "North Vancouver" },
+        { "@type": "City", "name": "West Vancouver" },
+        { "@type": "City", "name": "Richmond" },
+        { "@type": "City", "name": "Delta" },
+        { "@type": "City", "name": "Maple Ridge" },
+        { "@type": "City", "name": "Pitt Meadows" },
+        { "@type": "City", "name": "White Rock" }
+      ]
+    }
+  ]
+}
+---
+
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">Service areas</p>
+        <h1>Mobile grooming across Greater Vancouver</h1>
+        <p class="lede">
+            Pawgo doesn't have a storefront — the salon drives to you. If you're in one of the fifteen
+            cities below, your driveway is the grooming location.
+        </p>
+        <div class="page-hero__meta">
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+                15 cities + surrounding areas
+            </span>
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>
+                No travel to a salon
+            </span>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-head section-head--center">
+            <p class="eyebrow">Where we groom</p>
+            <h2>Fifteen cities, one mobile salon</h2>
+            <p class="lede">Dog grooming and cat grooming at your address, from the North Shore to White Rock.</p>
+        </div>
+        <ul class="area-tags" style="justify-content: center">
+            <li class="is-region">Greater Vancouver</li>
+            <li>Vancouver</li>
+            <li>Burnaby</li>
+            <li>Coquitlam</li>
+            <li>Port Coquitlam</li>
+            <li>Port Moody</li>
+            <li>New Westminster</li>
+            <li>Surrey</li>
+            <li>Langley</li>
+            <li>North Vancouver</li>
+            <li>West Vancouver</li>
+            <li>Richmond</li>
+            <li>Delta</li>
+            <li>Maple Ridge</li>
+            <li>Pitt Meadows</li>
+            <li>White Rock</li>
+            <li>&amp; surrounding areas</li>
+        </ul>
+    </div>
+</section>
+
+<section class="band-alt">
+    <div class="container duo">
+        <div class="prose">
+            <p class="eyebrow">How it works</p>
+            <h2>Grooming that comes to your street</h2>
+            <p>
+                Because every appointment happens at your address, service area matters more than it
+                would for a fixed salon. You're booking a real slot at your own door — no drop-off
+                window, no waiting room and no pickup run.
+            </p>
+            <div class="note note--teal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11.5v5"/></svg>
+                <p><strong>Just outside the list?</strong> Surrounding areas are included too — if your city sits next to one of these, ask before assuming you're out of range.</p>
+            </div>
+            <p><a class="link-arrow" href="../contact/">Ask about your area</a></p>
+
+            {{#if hasTravelFee}}
+            <h3>Travel fees</h3>
+            <p>{{policyTravelFee}}</p>
+            {{/if}}
+        </div>
+        <div>
+            <div class="map-frame">
+                <iframe
+                    src="https://www.google.com/maps?q=Greater%20Vancouver%2C%20BC%2C%20Canada&output=embed"
+                    title="Map showing the Greater Vancouver service area for Pawgo Mobile Grooming"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="section-head" style="margin: 2rem 0 1.2rem">
+                <p class="eyebrow">Popular searches</p>
+                <h2 style="font-size: clamp(1.4rem, 2.4vw, 1.75rem)">Looking for a groomer near you?</h2>
+            </div>
+            <div class="prose">
+                <p>
+                    Looking for services by city?
+                    <a href="../dog-grooming/">Dog grooming</a> and
+                    <a href="../cat-grooming/">cat grooming</a> pages cover the whole service area, and
+                    the <a href="../services/">services overview</a> lists everything Pawgo offers —
+                    whichever city you're booking from.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container container--narrow">
+        <div class="section-head section-head--center">
+            <p class="eyebrow">Area questions</p>
+            <h2>Coverage FAQ</h2>
+        </div>
+        <div class="faq" style="margin-inline: auto; max-width: none">
+            <details>
+                <summary>Do you groom in my city?</summary>
+                <div class="faq__answer"><p>If your city appears on the list above, yes. If it sits just outside, ask — the service area includes surrounding areas too. <a href="../contact/">Check your address</a>.</p></div>
+            </details>
+            <details>
+                <summary>Do you have a physical salon in Vancouver?</summary>
+                <div class="faq__answer"><p>No — Pawgo is mobile by design. The entire grooming setup travels to your address instead of you travelling to a storefront.</p></div>
+            </details>
+            {{#if hasTravelFee}}
+            <details>
+                <summary>Is there a travel surcharge?</summary>
+                <div class="faq__answer"><p>{{policyTravelFee}}</p></div>
+            </details>
+            {{/if}}
+        </div>
+    </div>
+</section>
+
+{{> cta-band.html}}

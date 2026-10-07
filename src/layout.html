@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en-CA">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{{title}}</title>
+        <meta name="description" content="{{description}}" />
+        <meta name="robots" content="{{robots}}" />
+        <link rel="canonical" href="{{canonical}}" />
+
+        <meta property="og:type" content="{{ogType}}" />
+        <meta property="og:site_name" content="{{businessName}}" />
+        <meta property="og:locale" content="en_CA" />
+        <meta property="og:url" content="{{canonical}}" />
+        <meta property="og:title" content="{{ogTitle}}" />
+        <meta property="og:description" content="{{description}}" />
+        <meta property="og:image" content="{{ogImage}}" />
+        <meta property="og:image:width" content="1080" />
+        <meta property="og:image:height" content="1080" />
+        <meta property="og:image:alt" content="Susan from Pawgo Mobile Grooming holding a freshly groomed Pomeranian" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="{{ogTitle}}" />
+        <meta name="twitter:description" content="{{description}}" />
+        <meta name="twitter:image" content="{{ogImage}}" />
+        <meta name="theme-color" content="#1f5f62" />
+
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Ctext y='.9em' font-size='480'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{{root}}css/style.css" />
+        {{headExtra}}
+        {{jsonld}}
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Skip to main content</a>
+
+        <header class="site-header" id="siteHeader">
+            <div class="container header-inner">
+                <a class="logo" href="{{root}}" aria-label="{{businessName}} — home">
+                    <span class="logo__mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <ellipse cx="12" cy="16.2" rx="4.6" ry="3.9" />
+                            <ellipse cx="6.2" cy="10.4" rx="2.1" ry="2.6" transform="rotate(-18 6.2 10.4)" />
+                            <ellipse cx="17.8" cy="10.4" rx="2.1" ry="2.6" transform="rotate(18 17.8 10.4)" />
+                            <ellipse cx="9.6" cy="6.2" rx="1.9" ry="2.4" transform="rotate(-8 9.6 6.2)" />
+                            <ellipse cx="14.4" cy="6.2" rx="1.9" ry="2.4" transform="rotate(8 14.4 6.2)" />
+                        </svg>
+                    </span>
+                    <span class="logo__text">
+                        <span class="logo__name">Pawgo</span>
+                        <span class="logo__tag">Mobile Grooming</span>
+                    </span>
+                </a>
+
+                <nav class="nav" id="mainNav" aria-label="Primary">
+                    <a class="nav__link" href="{{root}}services/" data-nav="services">Services</a>
+                    <a class="nav__link" href="{{root}}dog-grooming/" data-nav="dog-grooming">Dog Grooming</a>
+                    <a class="nav__link" href="{{root}}cat-grooming/" data-nav="cat-grooming">Cat Grooming</a>
+                    <a class="nav__link" href="{{root}}pricing/" data-nav="pricing">Pricing</a>
+                    <a class="nav__link" href="{{root}}about/" data-nav="about">About</a>
+                    <a class="nav__link" href="{{root}}blog/" data-nav="blog">Journal</a>
+                    <a class="nav__link" href="{{root}}faq/" data-nav="faq">FAQ</a>
+                    <a class="nav__link" href="{{root}}contact/" data-nav="contact">Contact</a>
+                    <a class="btn btn--primary header-cta" href="{{bookingHrefMain}}" data-nav="book">Book Now</a>
+                </nav>
+
+                <button
+                    class="nav-toggle"
+                    id="navToggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="mainNav"
+                    aria-label="Open menu"
+                >
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </header>
+
+        <main id="main">
+            {{breadcrumbs}}
+            {{content}}
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a class="logo" href="{{root}}">
+                            <span class="logo__mark" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <ellipse cx="12" cy="16.2" rx="4.6" ry="3.9" />
+                                    <ellipse cx="6.2" cy="10.4" rx="2.1" ry="2.6" transform="rotate(-18 6.2 10.4)" />
+                                    <ellipse cx="17.8" cy="10.4" rx="2.1" ry="2.6" transform="rotate(18 17.8 10.4)" />
+                                    <ellipse cx="9.6" cy="6.2" rx="1.9" ry="2.4" transform="rotate(-8 9.6 6.2)" />
+                                    <ellipse cx="14.4" cy="6.2" rx="1.9" ry="2.4" transform="rotate(8 14.4 6.2)" />
+                                </svg>
+                            </span>
+                            <span class="logo__text">
+                                <span class="logo__name">Pawgo</span>
+                                <span class="logo__tag">Mobile Grooming</span>
+                            </span>
+                        </a>
+                        <p>
+                            Stress-free pet spas, right at your doorstep. Cage-free, one-on-one grooming for dogs
+                            and cats across Greater Vancouver.
+                        </p>
+                        <p style="margin-top: 0.9rem">
+                            <a
+                                href="{{instagramUrl}}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="link-arrow"
+                                style="color: #9ad0d2"
+                                >{{instagramHandle}}</a
+                            >
+                        </p>
+                    </div>
+
+                    <div class="footer-col">
+                        <h2>Grooming</h2>
+                        <ul>
+                            <li><a href="{{root}}services/">All services</a></li>
+                            <li><a href="{{root}}dog-grooming/">Dog grooming</a></li>
+                            <li><a href="{{root}}cat-grooming/">Cat grooming</a></li>
+                            <li><a href="{{root}}pricing/">Pricing</a></li>
+                            <li><a href="{{root}}before-your-visit/">Before your visit</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h2>Company</h2>
+                        <ul>
+                            <li><a href="{{root}}about/">About Susan</a></li>
+                            <li><a href="{{root}}service-areas/">Service areas</a></li>
+                            <li><a href="{{root}}blog/">Journal</a></li>
+                            <li><a href="{{root}}faq/">FAQ</a></li>
+                            <li><a href="{{root}}contact/">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h2>Get in touch</h2>
+                        <ul>
+                            <li>
+                                <span class="contact-line">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                                    <a href="mailto:{{email}}">{{email}}</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="contact-line">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+                                    <a href="{{bookingHrefMain}}">Book online</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="contact-line">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+                                    <span>Mobile service — Greater Vancouver, BC</span>
+                                </span>
+                            </li>
+                            {{#if hasPhone}}
+                            <li>
+                                <span class="contact-line">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+                                    <a href="tel:{{phone}}">{{phone}}</a>
+                                </span>
+                            </li>
+                            {{/if}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>
+                        &copy; <span id="year">2026</span> {{businessName}}. All rights reserved.
+                    </p>
+                    <p>Serving Vancouver, Burnaby, Coquitlam, Surrey, Richmond &amp; surrounding areas</p>
+                </div>
+            </div>
+        </footer>
+
+        <div class="mobile-cta" aria-label="Quick actions">
+            <a class="btn btn--ghost" href="{{root}}contact/">Contact</a>
+            <a class="btn btn--primary" href="{{bookingHrefMain}}">Book Now</a>
+        </div>
+
+        <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+            <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Close image viewer">&times;</button>
+            <figure>
+                <img id="lightboxImg" src="" alt="" width="1080" height="1080" />
+                <figcaption id="lightboxCaption"></figcaption>
+            </figure>
+        </div>
+
+        <script src="{{root}}js/script.js" defer></script>
+        {{bookingScripts}}
+    </body>
+</html>

@@ -1,0 +1,138 @@
+---
+{
+  "path": "/contact/",
+  "title": "Contact Pawgo Mobile Grooming | Greater Vancouver Pet Groomer",
+  "description": "Contact Susan at Pawgo Mobile Grooming — email, Instagram or booking details. Mobile dog and cat grooming across Vancouver, Burnaby, Surrey and the region.",
+  "nav": "contact"
+}
+---
+
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Get in touch with Pawgo</h1>
+        <p class="lede">
+            Questions about a service, your pet's coat or your area? Susan reads every message — email
+            and Instagram are the fastest ways to reach her.
+        </p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="info-grid">
+            <div class="info-card reveal">
+                <span class="info-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                </span>
+                <h2>Email</h2>
+                <p>For questions about services, pricing or your pet's needs.</p>
+                <a href="mailto:{{email}}">{{email}}</a>
+            </div>
+
+            <div class="info-card reveal">
+                <span class="info-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="1.1" fill="currentColor"/></svg>
+                </span>
+                <h2>Instagram</h2>
+                <p>Latest grooms, before-and-afters and day-to-day from the mobile salon.</p>
+                <a href="{{instagramUrl}}" target="_blank" rel="noopener noreferrer">{{instagramHandle}}</a>
+            </div>
+
+            <div class="info-card reveal">
+                <span class="info-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+                </span>
+                <h2>Booking</h2>
+                <p>A $50 deposit secures your appointment; the balance is paid by e-Transfer after the groom.</p>
+                <a href="{{bookingHrefMain}}">Go to the booking page</a>
+            </div>
+
+            <div class="info-card reveal">
+                <span class="info-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+                </span>
+                <h2>Service area</h2>
+                <p>Mobile appointments across 15 Greater Vancouver cities — no storefront to visit.</p>
+                <a href="../service-areas/">See if we cover your city</a>
+            </div>
+
+            {{#if hasPhone}}
+            <div class="info-card reveal">
+                <span class="info-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+                </span>
+                <h2>Phone</h2>
+                <p>Fastest for urgent day-of questions.</p>
+                <a href="tel:{{phone}}">{{phone}}</a>
+            </div>
+            {{/if}}
+
+            {{#if hasHours}}
+            <div class="info-card reveal">
+                <span class="info-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+                </span>
+                <h2>Hours</h2>
+                <p>{{hoursText}}</p>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</section>
+
+<section class="band-alt">
+    <div class="container duo">
+        <div>
+            <div class="section-head" style="margin-bottom: 1.4rem">
+                <p class="eyebrow">Send a message</p>
+                <h2>Write to Susan</h2>
+                <p class="lede">This form opens your email app with the message ready to send — nothing is stored on this website.</p>
+            </div>
+            <form class="form" id="contactForm" action="mailto:{{email}}" method="post" enctype="text/plain">
+                <div class="form__row">
+                    <div class="field">
+                        <label for="cf-name">Your name <span class="req" aria-hidden="true">*</span></label>
+                        <input id="cf-name" name="name" type="text" autocomplete="name" required />
+                    </div>
+                    <div class="field">
+                        <label for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
+                        <input id="cf-email" name="email" type="email" autocomplete="email" required />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="cf-pet">Pet — breed or type, size, coat</label>
+                    <input id="cf-pet" name="pet" type="text" placeholder="e.g. Shih Tzu, small, long coat" />
+                </div>
+                <div class="field">
+                    <label for="cf-message">Message <span class="req" aria-hidden="true">*</span></label>
+                    <textarea id="cf-message" name="message" required placeholder="Tell Susan what you need — service, city, timing."></textarea>
+                    <span class="hint">Prefer chat? Message <a href="{{instagramUrl}}" target="_blank" rel="noopener">{{instagramHandle}}</a> on Instagram.</span>
+                </div>
+                <div>
+                    <button class="btn btn--primary" type="submit">Compose email</button>
+                </div>
+                <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+
+        <div>
+            <div class="section-head" style="margin-bottom: 1.4rem">
+                <p class="eyebrow">Where we work</p>
+                <h2>Greater Vancouver coverage</h2>
+                <p class="lede">Vancouver, Burnaby, Coquitlam, Surrey, Richmond, Langley and twelve more cities.</p>
+            </div>
+            <div class="map-frame">
+                <iframe
+                    src="https://www.google.com/maps?q=Greater%20Vancouver%2C%20BC%2C%20Canada&output=embed"
+                    title="Map of the Greater Vancouver service area covered by Pawgo Mobile Grooming"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen></iframe>
+            </div>
+            <p style="margin-top: 1.2rem"><a class="link-arrow" href="../service-areas/">Full list of service areas</a></p>
+        </div>
+    </div>
+</section>
+
+{{> cta-band.html}}
