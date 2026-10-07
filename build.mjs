@@ -9,13 +9,18 @@
  *
  * ─────────────────────────────────────────────────────────────────────
  * OWNER INPUTS REQUIRED BEFORE LAUNCH (fill in below; site adapts):
- *   1. SITE_URL        — final production domain (NOT confirmed yet)
- *   2. BUSINESS.phone  — phone number (null = omitted everywhere)
- *   3. BUSINESS.hours  — opening hours (null = omitted everywhere)
- *   4. BOOKING.*       — booking provider + URLs (see BOOKING block)
- *   5. POLICIES.*      — cancellation, late/no-show, owner presence,
- *                        second person, travel fee, senior pets
- *                        (null = omitted from the site entirely)
+ *   1. SITE_URL          — final production domain (NOT confirmed yet)
+ *   2. BUSINESS.hours    — days of week for the confirmed 9:00 AM–7:00 PM
+ *                          window (value confirmed; days drive schema only)
+ *   3. BOOKING.*         — booking provider + URLs (see BOOKING block)
+ *   4. POLICIES.*        — late arrival, owner presence, second person
+ *                          (null = omitted from the site entirely)
+ * ALREADY CONFIRMED BY OWNER (2026-10-07 final update):
+ *   • phone: +1 236-888-1559 (display 236-888-1559)
+ *   • hours: 9:00 AM – 7:00 PM
+ *   • full price list (PRICES), $30 deposit + cancellation policy,
+ *     travel-fee policy, senior-pet policy, temperament/aggression policy,
+ *     pricing policy (see POLICIES / PRICE_POLICY)
  * ─────────────────────────────────────────────────────────────────────
  */
 
@@ -44,12 +49,13 @@ const BUSINESS = {
     email: "Susan.ebrahimi55@gmail.com",
     instagram: "https://www.instagram.com/pawgo_mobile_grooming",
     instagramHandle: "@pawgo_mobile_grooming",
-    /** Not published on the original site — leave null until the owner confirms. */
-    phone: null, // e.g. "+1 604 555 0123"
+    /** Confirmed by the owner — E.164; shown as 236-888-1559. */
+    phone: "+12368881559",
     /** Mobile business — no public storefront address. */
     address: null,
-    /** Opening hours are not published — leave null until confirmed. */
-    hours: null, // e.g. [{ days: "Monday–Friday", time: "9:00–17:00" }]
+    /** Confirmed by the owner (2026-10-07) — days of week not specified,
+     *  so openingHoursSpecification stays out of the schema until they are. */
+    hours: { text: "9:00 AM – 7:00 PM", opens: "09:00", closes: "19:00" },
     areaServed: [
         "Vancouver",
         "Burnaby",
@@ -67,7 +73,7 @@ const BUSINESS = {
         "Pitt Meadows",
         "White Rock",
     ],
-    priceRange: "CA$42–CA$210",
+    priceRange: "CA$10–CA$210",
 };
 
 /**
@@ -103,29 +109,80 @@ const BOOKING = {
 };
 
 /**
- * UNCONFIRMED BUSINESS POLICIES — all null.
- * Each one, once set to answer text supplied by the owner, automatically
- * appears in the matching FAQ/content block (no page edits needed).
+ * BUSINESS POLICIES — each value is the owner-confirmed answer text.
+ * While null, the matching FAQ/content block is omitted from the site
+ * entirely; once set, it appears automatically (no page edits needed).
  */
 const POLICIES = {
-    cancellation: null, // full answer text for the cancellation FAQ
+    /** Confirmed by the owner (2026-10-07). Deposit is non-refundable —
+     *  never describe it as refundable. */
+    cancellation:
+        "A $30 deposit secures your appointment and is applied toward the total cost of the grooming service. Cancellations or rescheduling made at least 24 hours in advance can have the deposit transferred to a new appointment. Deposits are non-refundable for cancellations with less than 24 hours' notice and for no-shows.",
     lateArrival: null, // late / missed appointment FAQ
     noShow: null,
-    seniorPet: null, // age-related guidance FAQ
+    /** Confirmed by the owner (2026-10-07). */
+    seniorPet:
+        "Senior pets are always welcome, with no additional fee. Their comfort and safety come first — rest breaks are provided as needed throughout the grooming session, and grooming is performed at a pace that is comfortable for your pet.",
     ownerPresence: null, // “can I stay / do I need to be home?” FAQ
     secondPerson: null, // “can someone accompany the pet?” FAQ
-    travelFee: null, // travel surcharge FAQ + service-area note
+    /** Confirmed by the owner (2026-10-07). */
+    travelFee:
+        "No travel fee in Coquitlam, Port Coquitlam and Port Moody. For locations outside these areas, a small travel fee may apply depending on distance. Any additional fee will be confirmed before booking.",
 };
+
+/** De-matting pricing — owner-confirmed (2026-10-07): charged by time,
+ *  never shown as a flat $20 service price. */
+const DEMATTING = {
+    amount: "20",
+    minutes: 15,
+    rateText: "CA$20 per 15 minutes",
+    policy:
+        "De-matting is charged by time at CA$20 per 15 minutes, depending on the severity of the matting and the actual time required — 15 minutes is CA$20, 30 minutes is CA$40, 45 minutes is CA$60 and 60 minutes is CA$80.",
+};
+
+/** Confirmed pricing policy (2026-10-07) — shown as a partial wherever
+ *  starting prices are listed. */
+const PRICE_POLICY =
+    "All prices are starting prices and may vary depending on your pet's breed, size, coat condition, temperament, and the time required for grooming. Any additional charges will always be discussed with you before they are applied.";
+
+/** Confirmed temperament policy (2026-10-07) — safety decides; case-by-case. */
+const TEMPERAMENT_POLICY =
+    "Anxious, nervous, reactive, and difficult-to-groom dogs are welcome. Dogs with a history of aggression may also be accepted on a case-by-case basis, as long as grooming can be performed safely — safety is always the deciding factor. Please tell us about any history of aggression or biting before booking.";
 
 /** Canonical price list (CAD). Source of truth for schema offers;
  *  visible price copy lives on the pages and must match these. */
 const PRICES = {
-    fullGroom: { small: "150.00", medium: "170.00", large: "190.00", xl: "210.00" },
-    deshed: { small: "130.00", medium: "150.00", large: "170.00", xl: "190.00" },
-    cat: { shortHair: "150.00", longHair: "170.00", lionCut: "190.00" },
-    matRemovalFrom: "120.00",
-    nailTrim: "42.00",
-    nailTrimX2: "65.00",
+    dogFullGroom: {
+        small: "110.00", // up to 25 lbs
+        medium: "130.00", // 26–40 lbs
+        large: "155.00", // 41–65 lbs
+        xl: "185.00", // 66–90 lbs
+        xxl: "210.00", // over 90 lbs
+    },
+    bathTidy: {
+        small: "85.00",
+        medium: "105.00",
+        large: "130.00",
+        xl: "160.00",
+        xxl: "185.00",
+    },
+    doodlePoodle: { small: "125.00", medium: "150.00", large: "180.00", xl: "210.00" },
+    cat: {
+        bathBrushBlowDry: "100.00",
+        bathBrushSanitary: "120.00",
+        lionCutNoBath: "140.00",
+        lionCutBath: "160.00",
+        nailTrim: "20.00",
+        dematting: "20.00", // rate only — CA$20 per 15 minutes, not a flat price
+    },
+    addOns: {
+        dogNailTrim: "20.00",
+        teethBrushing: "10.00",
+        desheddingTreatment: "20.00",
+        dematting: "20.00", // rate only — CA$20 per 15 minutes, not a flat price
+        fleaTreatment: "20.00",
+    },
+    deposit: "30.00",
 };
 
 const bookingReady = Boolean(BOOKING.provider && BOOKING.mainUrl);
@@ -150,6 +207,13 @@ const BLOG_DATES = {
     "/blog/how-often-should-you-groom-your-dog/": "2026-09-10",
     "/blog/how-to-prepare-your-dog-for-grooming/": "2026-09-24",
     "/blog/how-to-prepare-your-cat-for-grooming/": "2026-10-01",
+    "/blog/between-groom-coat-care-for-dogs/": "2026-10-07",
+};
+
+/** lastmod overrides for posts edited after publication. */
+const BLOG_LASTMOD = {
+    "/blog/how-often-should-you-groom-your-dog/": "2026-10-07",
+    "/blog/how-to-prepare-your-cat-for-grooming/": "2026-10-07",
     "/blog/between-groom-coat-care-for-dogs/": "2026-10-07",
 };
 
@@ -200,6 +264,13 @@ function normalizeUrls(value) {
     return value;
 }
 
+/** Format an E.164 North American number for display: +12368881559 → 236-888-1559 */
+function formatPhone(e164) {
+    const digits = String(e164).replace(/\D/g, "");
+    const national = digits.length === 11 && digits.startsWith("1") ? digits.slice(1) : digits;
+    return national.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1-$2-$3");
+}
+
 /** Gate template blocks on config values: {{#if key}}…{{/if}} (non-nested). */
 function applyConditionals(html, vars) {
     let out = html;
@@ -223,7 +294,7 @@ function applyTokens(html, vars) {
     }
     // Remove empty config tokens (value not configured yet).
     return out.replace(
-        /\{\{(?:businessName|email|instagramUrl|instagramHandle|phone|hoursText|bookingMainUrl|bookingEmbedSrc|bookingEmbedHeight|bookingHrefMain|bookingHrefDog|bookingHrefCat|policy[A-Za-z]+)\}\}/g,
+        /\{\{(?:businessName|email|instagramUrl|instagramHandle|phone|phoneHref|hoursText|deposit|demattingPrice|demattingRate|demattingPolicy|pricePolicy|temperamentPolicy|bookingMainUrl|bookingEmbedSrc|bookingEmbedHeight|bookingHrefMain|bookingHrefDog|bookingHrefCat|policy[A-Za-z]+)\}\}/g,
         "",
     );
 }
@@ -236,10 +307,15 @@ function templateVars(root) {
         email: BUSINESS.email,
         instagramUrl: BUSINESS.instagram,
         instagramHandle: BUSINESS.instagramHandle,
-        phone: BUSINESS.phone || "",
-        hoursText: BUSINESS.hours
-            ? BUSINESS.hours.map((h) => `${h.days}: ${h.time}`).join(", ")
-            : "",
+        phone: BUSINESS.phone ? formatPhone(BUSINESS.phone) : "",
+        phoneHref: BUSINESS.phone || "",
+        hoursText: BUSINESS.hours ? BUSINESS.hours.text : "",
+        deposit: "$" + PRICES.deposit.split(".")[0],
+        demattingPrice: "CA$" + DEMATTING.amount + " / " + DEMATTING.minutes + " min",
+        demattingRate: DEMATTING.rateText,
+        demattingPolicy: DEMATTING.policy,
+        pricePolicy: PRICE_POLICY,
+        temperamentPolicy: TEMPERAMENT_POLICY,
         // booking states
         bookingReady,
         bookingEmbedReady,
@@ -417,7 +493,9 @@ function offer(name, price) {
 }
 
 function localBusinessSchema() {
-    const F = PRICES.fullGroom;
+    const D = PRICES.dogFullGroom;
+    const B = PRICES.bathTidy;
+    const P = PRICES.doodlePoodle;
     const C = PRICES.cat;
     return {
         "@context": "https://schema.org",
@@ -428,19 +506,10 @@ function localBusinessSchema() {
             "Mobile pet grooming for dogs and cats in Greater Vancouver. Cage-free, one-on-one grooming that comes to your door.",
         url: urlFor("/"),
         email: BUSINESS.email,
-        // Omitted while unknown: telephone, address, openingHoursSpecification
+        // Omitted while unknown: address, openingHoursSpecification (hours
+        // window is confirmed but its days of week are not yet).
         ...(BUSINESS.phone ? { telephone: BUSINESS.phone } : {}),
         ...(BUSINESS.address ? { address: BUSINESS.address } : {}),
-        ...(BUSINESS.hours
-            ? {
-                  openingHoursSpecification: BUSINESS.hours.map((h) => ({
-                      "@type": "OpeningHoursSpecification",
-                      dayOfWeek: h.days,
-                      opens: h.opens,
-                      closes: h.closes,
-                  })),
-              }
-            : {}),
         image: BUSINESS.logo,
         logo: BUSINESS.logo,
         priceRange: BUSINESS.priceRange,
@@ -457,14 +526,26 @@ function localBusinessSchema() {
             worksFor: { "@id": urlFor("/") + "#business" },
         },
         makesOffer: [
-            offer("Full Groom Package — Small Dog", F.small),
-            offer("Full Groom Package — Medium Dog", F.medium),
-            offer("Full Groom Package — Large Dog", F.large),
-            offer("Full Groom Package — XL Dog", F.xl),
-            offer("Cat Groom — Short Hair", C.shortHair),
-            offer("Cat Groom — Long Hair", C.longHair),
-            offer("Lion Cut", C.lionCut),
-            offer("Nail Trim Only", PRICES.nailTrim),
+            offer("Dog Full Groom — Small (up to 25 lbs)", D.small),
+            offer("Dog Full Groom — Medium (26–40 lbs)", D.medium),
+            offer("Dog Full Groom — Large (41–65 lbs)", D.large),
+            offer("Dog Full Groom — XL (66–90 lbs)", D.xl),
+            offer("Dog Full Groom — XXL (over 90 lbs)", D.xxl),
+            offer("Bath & Tidy — Small (up to 25 lbs)", B.small),
+            offer("Bath & Tidy — Medium (26–40 lbs)", B.medium),
+            offer("Bath & Tidy — Large (41–65 lbs)", B.large),
+            offer("Bath & Tidy — XL (66–90 lbs)", B.xl),
+            offer("Bath & Tidy — XXL (over 90 lbs)", B.xxl),
+            offer("Doodle & Poodle Full Groom — Small", P.small),
+            offer("Doodle & Poodle Full Groom — Medium", P.medium),
+            offer("Doodle & Poodle Full Groom — Large", P.large),
+            offer("Doodle & Poodle Full Groom — XL", P.xl),
+            offer("Cat Bath + Brush + Blow Dry", C.bathBrushBlowDry),
+            offer("Cat Bath + Brush + Sanitary Trim", C.bathBrushSanitary),
+            offer("Cat Haircut / Lion Cut — No Bath", C.lionCutNoBath),
+            offer("Cat Haircut / Lion Cut + Bath", C.lionCutBath),
+            offer("Cat Nail Trim", C.nailTrim),
+            offer("De-matting — charged per 15 minutes", PRICES.addOns.dematting),
         ],
     };
 }
@@ -611,7 +692,7 @@ for (const f of files) {
         path === "/" ? join(ROOT, "index.html") : join(ROOT, path.replace(/^\//, ""), "index.html");
     mkdirSync(dirname(outPath), { recursive: true });
     writeFileSync(outPath, html, "utf8");
-    rendered.push({ path, canonical, meta, lastmod: BLOG_DATES[path] || null });
+    rendered.push({ path, canonical, meta, lastmod: BLOG_LASTMOD[path] || BLOG_DATES[path] || null });
     console.log(`built  ${path}`);
 }
 

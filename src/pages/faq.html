@@ -34,13 +34,19 @@
             <details>
                 <summary>How do I book an appointment?</summary>
                 <div class="faq__answer">
-                    <p>Start on the booking page — it lists the current way to book. A $50 deposit secures the appointment, and the remaining balance is paid by e-Transfer after the groom. <a href="{{bookingHrefMain}}">Go to booking</a>.</p>
+                    <p>Start on the booking page — it lists the current way to book. A {{deposit}} deposit secures the appointment and is applied toward the total cost, and the remaining balance is paid by e-Transfer after the groom. <a href="{{bookingHrefMain}}">Go to booking</a>.</p>
                 </div>
             </details>
             <details>
                 <summary>How do I pay?</summary>
                 <div class="faq__answer">
-                    <p>A $50 deposit is required to secure your booking. The remaining balance can be paid via e-Transfer upon completion of the groom.</p>
+                    <p>A {{deposit}} deposit is required to secure your booking and is applied toward the total cost of the grooming service. The remaining balance can be paid via e-Transfer upon completion of the groom.</p>
+                </div>
+            </details>
+            <details>
+                <summary>Are these fixed prices?</summary>
+                <div class="faq__answer">
+                    <p>{{pricePolicy}}</p>
                 </div>
             </details>
             {{#if hasCancellation}}
@@ -71,7 +77,7 @@
             <details>
                 <summary>How long does a grooming appointment take?</summary>
                 <div class="faq__answer">
-                    <p>Nail trims take 15–30 minutes, mat removal about 1 hour, dog deshedding 1.5–2 hours, full dog grooms about 2 hours, and cat grooms 1.5–2 hours depending on coat length.</p>
+                    <p>Full dog grooms take about 2 hours and cat grooms 1.5–2 hours depending on coat length. Quick add-ons are much shorter.</p>
                 </div>
             </details>
             <details>
@@ -87,9 +93,9 @@
                 </div>
             </details>
             <details>
-                <summary>Do you groom nervous pets?</summary>
+                <summary>Do you groom nervous, reactive or difficult pets?</summary>
                 <div class="faq__answer">
-                    <p>The mobile, one-on-one setup is designed for pets who find salons stressful: no car ride, no cage, no other animals, and Susan's full attention for the entire appointment.</p>
+                    <p>{{temperamentPolicy}} The mobile, one-on-one setup helps too: no car ride, no cage, no other animals, and Susan's full attention for the entire appointment.</p>
                 </div>
             </details>
             {{#if hasSeniorPet}}
@@ -103,7 +109,7 @@
             <details>
                 <summary>Do you handle matted coats?</summary>
                 <div class="faq__answer">
-                    <p>Yes. Mat removal is available as a standalone service from CA$120 — about 1 hour, no bath or styling, with the final price depending on severity. <a href="../services/#mat-removal">Mat removal details</a>.</p>
+                    <p>Yes. {{demattingPolicy}} Any additional charges are discussed with you before they are applied. <a href="../services/#add-ons">Add-on details</a>.</p>
                 </div>
             </details>
             {{#if hasOwnerPresence}}
@@ -126,13 +132,13 @@
             <details>
                 <summary>Do you groom cats as well as dogs?</summary>
                 <div class="faq__answer">
-                    <p>Yes. Cat appointments include short-hair grooms (1.5 hrs, CA$150), long-hair grooms (2 hrs, CA$170) and lion cuts (2 hrs, CA$190) — all done one-on-one and cage-free. <a href="../cat-grooming/">See cat grooming</a>.</p>
+                    <p>Yes. Cat appointments include bath + brush + blow dry from CA$100, bath + brush + sanitary trim from CA$120, lion cuts from CA$140 (with a bath from CA$160), nail trims CA$20 and de-matting {{demattingRate}} — all done one-on-one and cage-free. <a href="../cat-grooming/">See cat grooming</a>.</p>
                 </div>
             </details>
             <details>
                 <summary>What is a lion cut?</summary>
                 <div class="faq__answer">
-                    <p>A lion cut takes the body coat down short while leaving the head, mane, tail tip and booties. It's the standard reset for heavily coated or badly matted long-haired cats, and it takes about 2 hours.</p>
+                    <p>A lion cut takes the body coat down short while leaving the head, mane, tail tip and booties. It's the standard reset for heavily coated or badly matted long-haired cats, available with or without a bath, and it takes about 2 hours.</p>
                 </div>
             </details>
         </div>
@@ -159,7 +165,7 @@
             <details>
                 <summary>How do I contact Pawgo?</summary>
                 <div class="faq__answer">
-                    <p>Email <a href="mailto:{{email}}">{{email}}</a>, message <a href="{{instagramUrl}}" target="_blank" rel="noopener">{{instagramHandle}}</a> on Instagram, or use the <a href="../contact/">contact page</a>.{{#if hasPhone}} Phone: <a href="tel:{{phone}}">{{phone}}</a>.{{/if}}</p>
+                    <p>Email <a href="mailto:{{email}}">{{email}}</a>, message <a href="{{instagramUrl}}" target="_blank" rel="noopener">{{instagramHandle}}</a> on Instagram, or use the <a href="../contact/">contact page</a>.{{#if hasPhone}} Phone: <a href="tel:{{phoneHref}}">{{phone}}</a>.{{/if}}</p>
                 </div>
             </details>
         </div>

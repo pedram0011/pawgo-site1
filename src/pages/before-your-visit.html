@@ -49,7 +49,7 @@
         <ol class="steps">
             <li class="reveal">
                 <h3>Book &amp; deposit</h3>
-                <p>Reserve your slot online and secure it with a $50 deposit. The balance is paid after the groom.</p>
+                <p>Reserve your slot online and secure it with a {{deposit}} deposit. The balance is paid after the groom.</p>
             </li>
             <li class="reveal">
                 <h3>Prepare the day before</h3>
@@ -133,12 +133,11 @@
                 <h2>During the appointment</h2>
                 <p>
                     The setup arrives at your address and your pet is groomed on site, one-on-one. Expect
-                    the booked duration: 15–30 minutes for nail trims, around an hour for mat removal,
-                    1.5–2 hours for cat grooms and 1.5–2 hours for dog grooms depending on package and
-                    size.
+                    the booked duration: about 2 hours for full dog grooms and 1.5–2 hours for cat grooms,
+                    depending on the service, coat and size.
                 </p>
                 <p>
-                    Susan works through bath, dry, cut or deshed, nails and tidy-up as covered by your
+                    Susan works through bath, dry, cut or tidy, nails and ear cleaning as covered by your
                     booking — with nothing else on the schedule to rush the session.
                 </p>
             </div>
@@ -153,7 +152,7 @@
             <h2>Pickup &amp; payment</h2>
             <p>
                 There's no pickup run to schedule: your pet is handed back to you at your own door when
-                the groom is finished. Pay the remaining balance by e-Transfer at that point — the $50
+                the groom is finished. Pay the remaining balance by e-Transfer at that point — the {{deposit}}
                 deposit you paid when booking is already accounted for.
             </p>
             <p>
@@ -184,7 +183,11 @@
         <div class="faq" style="margin-inline: auto; max-width: none">
             <details>
                 <summary>What if my pet is matted and I didn't brush beforehand?</summary>
-                <div class="faq__answer"><p>That's fine — mat removal is a standard service from CA$120, priced by severity. Just don't attempt to cut mats out yourself first.</p></div>
+                <div class="faq__answer"><p>That's fine. {{demattingPolicy}} Just don't attempt to cut mats out yourself first.</p></div>
+            </details>
+            <details>
+                <summary>My dog is anxious, reactive, or has a history of biting — is that okay?</summary>
+                <div class="faq__answer"><p>{{temperamentPolicy}}</p></div>
             </details>
             {{#if hasOwnerPresence}}
             <details>

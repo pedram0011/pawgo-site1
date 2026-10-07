@@ -44,7 +44,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
                 </span>
                 <h2>Booking</h2>
-                <p>A $50 deposit secures your appointment; the balance is paid by e-Transfer after the groom.</p>
+                <p>A {{deposit}} deposit secures your appointment and is applied toward the total cost; the balance is paid by e-Transfer after the groom.</p>
                 <a href="{{bookingHrefMain}}">Go to the booking page</a>
             </div>
 
@@ -63,8 +63,8 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
                 </span>
                 <h2>Phone</h2>
-                <p>Fastest for urgent day-of questions.</p>
-                <a href="tel:{{phone}}">{{phone}}</a>
+                <p>Call Susan about your appointment.</p>
+                <a href="tel:{{phoneHref}}">{{phone}}</a>
             </div>
             {{/if}}
 

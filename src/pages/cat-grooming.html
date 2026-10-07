@@ -2,7 +2,7 @@
 {
   "path": "/cat-grooming/",
   "title": "Cat Grooming in Greater Vancouver | Gentle Mobile Cat Groomer | Pawgo",
-  "description": "Gentle mobile cat grooming in Greater Vancouver. Short-hair grooms from CA$150, long-hair from CA$170, lion cuts from CA$190 — one cat at a time, cage-free.",
+  "description": "Gentle mobile cat grooming in Greater Vancouver. Baths from CA$100, lion cuts from CA$140, nail trims CA$20 — one cat at a time, cage-free.",
   "nav": "cat-grooming",
   "schemas": [
     {
@@ -10,14 +10,16 @@
       "@type": "Service",
       "serviceType": "Cat grooming",
       "name": "Mobile cat grooming — Greater Vancouver",
-      "description": "Gentle, patient cat grooming at your address across Greater Vancouver: short-hair grooms (1.5 hrs, CA$150), long-hair grooms (2 hrs, CA$170) and lion cuts (2 hrs, CA$190). One cat at a time, cage-free.",
+      "description": "Gentle, patient cat grooming at your address across Greater Vancouver: bath and brush with blow dry (from CA$100), bath and brush with sanitary trim (from CA$120), lion cut without bath (from CA$140), lion cut with bath (from CA$160), nail trim (CA$20) and de-matting (CA$20 per 15 minutes). One cat at a time, cage-free.",
       "url": "https://pawgomobilegrooming.com/cat-grooming/",
       "provider": { "@id": "https://pawgomobilegrooming.com/#business" },
       "areaServed": "Vancouver, Burnaby, Coquitlam, Port Coquitlam, Port Moody, New Westminster, Surrey, Langley, North Vancouver, West Vancouver, Richmond, Delta, Maple Ridge, Pitt Meadows, White Rock",
       "offers": [
-        { "@type": "Offer", "name": "Short hair cat groom", "price": "150.00", "priceCurrency": "CAD", "url": "https://pawgomobilegrooming.com/book/" },
-        { "@type": "Offer", "name": "Long hair cat groom", "price": "170.00", "priceCurrency": "CAD", "url": "https://pawgomobilegrooming.com/book/" },
-        { "@type": "Offer", "name": "Cat lion cut", "price": "190.00", "priceCurrency": "CAD", "url": "https://pawgomobilegrooming.com/book/" }
+        { "@type": "Offer", "name": "Cat bath + brush + blow dry", "price": "100.00", "priceCurrency": "CAD", "url": "https://pawgomobilegrooming.com/book/" },
+        { "@type": "Offer", "name": "Cat bath + brush + sanitary trim", "price": "120.00", "priceCurrency": "CAD", "url": "https://pawgomobilegrooming.com/book/" },
+        { "@type": "Offer", "name": "Cat haircut / lion cut — no bath", "price": "140.00", "priceCurrency": "CAD", "url": "https://pawgomobilegrooming.com/book/" },
+        { "@type": "Offer", "name": "Cat haircut / lion cut + bath", "price": "160.00", "priceCurrency": "CAD", "url": "https://pawgomobilegrooming.com/book/" },
+        { "@type": "Offer", "name": "Cat nail trim", "price": "20.00", "priceCurrency": "CAD", "url": "https://pawgomobilegrooming.com/book/" }
       ]
     }
   ]
@@ -35,11 +37,11 @@
         <div class="page-hero__meta">
             <span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v18M5 10l7-7 7 7"/></svg>
-                From CA$150
+                Baths from CA$100
             </span>
             <span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
-                1.5–2 hour appointments
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11.5v5"/></svg>
+                {{deposit}} deposit to book
             </span>
             <span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>
@@ -62,9 +64,8 @@
                 present, and the appointment runs at cat pace rather than appointment-book pace.
             </p>
             <p>
-                Sessions are priced by coat length, because a short-haired Domestic Shorthair and a
-                Persian need very different amounts of work. Long-haired cats and heavily coated cats
-                can also be booked as a lion cut.
+                Sessions are priced by service — bath, trim or lion cut — so you pick exactly what your
+                cat needs. Long-haired and heavily coated cats can also be booked as a lion cut.
             </p>
             <blockquote>
                 "My cat actually tolerated grooming for once! Susan is patient, kind, and clearly loves
@@ -75,7 +76,7 @@
         <div class="reveal">
             <div class="section-head" style="margin-bottom: 1.4rem">
                 <p class="eyebrow">Cat grooming options</p>
-                <h2>Priced by coat length</h2>
+                <h2>Cat services &amp; starting prices</h2>
             </div>
             <div class="menu-group" style="box-shadow: none">
                 <div class="menu-group__head">
@@ -86,19 +87,34 @@
                 </div>
                 <p class="menu-group__desc">Gentle, patient grooming tailored for cats.</p>
                 <div class="menu-row">
-                    <span class="menu-row__name">Short hair cat</span>
-                    <span class="menu-row__meta">1.5 hrs</span>
-                    <span class="menu-row__price">CA$150.00</span>
+                    <span class="menu-row__name">Bath + brush + blow dry</span>
+                    <span class="menu-row__meta">Starting at</span>
+                    <span class="menu-row__price">CA$100.00</span>
                 </div>
                 <div class="menu-row">
-                    <span class="menu-row__name">Long hair cat</span>
-                    <span class="menu-row__meta">2 hrs</span>
-                    <span class="menu-row__price">CA$170.00</span>
+                    <span class="menu-row__name">Bath + brush + sanitary trim</span>
+                    <span class="menu-row__meta">Starting at</span>
+                    <span class="menu-row__price">CA$120.00</span>
                 </div>
                 <div class="menu-row">
-                    <span class="menu-row__name">Lion cut</span>
-                    <span class="menu-row__meta">2 hrs</span>
-                    <span class="menu-row__price">CA$190.00</span>
+                    <span class="menu-row__name">Haircut / lion cut — no bath</span>
+                    <span class="menu-row__meta">Starting at</span>
+                    <span class="menu-row__price">CA$140.00</span>
+                </div>
+                <div class="menu-row">
+                    <span class="menu-row__name">Haircut / lion cut + bath</span>
+                    <span class="menu-row__meta">Starting at</span>
+                    <span class="menu-row__price">CA$160.00</span>
+                </div>
+                <div class="menu-row">
+                    <span class="menu-row__name">Cat nail trim</span>
+                    <span class="menu-row__meta">&nbsp;</span>
+                    <span class="menu-row__price">CA$20.00</span>
+                </div>
+                <div class="menu-row">
+                    <span class="menu-row__name">Cat de-matting</span>
+                    <span class="menu-row__meta">Per 15 min, by time</span>
+                    <span class="menu-row__price">{{demattingPrice}}</span>
                 </div>
                 <a class="btn btn--primary" href="{{bookingHrefCat}}" style="margin-top: 1.4rem; width: 100%">Book a cat groom</a>
             </div>
@@ -110,7 +126,7 @@
     <div class="container">
         <div class="section-head section-head--center">
             <p class="eyebrow">Coat care</p>
-            <h2>Short hair, long hair &amp; lion cuts</h2>
+            <h2>Baths, trims &amp; lion cuts</h2>
             <p class="lede">The right session depends on what your cat's coat is actually doing.</p>
         </div>
         <div class="duo">
@@ -118,14 +134,14 @@
                 <h3>Short-haired cats</h3>
                 <p>
                     Domestic Shorthairs look low-maintenance, and mostly they are — until loose winter
-                    coat, dander or a missed patch of matting behind the ears says otherwise. A
-                    short-hair session is the lightest option at 1.5 hours.
+                    coat, dander or a missed patch of matting behind the ears says otherwise. A bath with
+                    brush and blow dry is the lightest option.
                 </p>
                 <h3>Long-haired cats</h3>
                 <p>
                     Persians, Ragdolls, Maine Coons and long-haired mixes mat more easily, especially
-                    around the belly, armpits and behind the hind legs. Long-haired sessions run 2 hours
-                    to allow for the extra combing and drying.
+                    around the belly, armpits and behind the hind legs. Add a sanitary trim, or book the
+                    bath and brush with extra combing and drying.
                 </p>
             </div>
             <div class="prose">
@@ -133,14 +149,18 @@
                 <p>
                     A lion cut takes the body coat down short while leaving the head, mane, tail tip and
                     booties — the classic lion silhouette. It's the practical choice for badly matted or
-                    heat-burdened long coats, and it takes about 2 hours.
+                    heat-burdened long coats, with or without a bath.
                 </p>
                 <p>
-                    Grown-out coats can be reset with a lion cut and maintained with regular long-hair
-                    sessions afterwards. If you're unsure which your cat needs, book the closest match —
-                    the session is confirmed with you when you book.
+                    Grown-out coats can be reset with a lion cut and maintained with regular sessions
+                    afterwards. If you're unsure which your cat needs, book the closest match — the
+                    service is confirmed with you when you book.
                 </p>
             </div>
+        </div>
+        <div class="note" style="margin-top: 2rem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11.5v5"/></svg>
+            <p>{{pricePolicy}}</p>
         </div>
     </div>
 </section>
@@ -238,15 +258,15 @@
             </details>
             <details>
                 <summary>How long does a cat groom take?</summary>
-                <div class="faq__answer"><p>Short-haired cats take 1.5 hours. Long-haired cats and lion cuts take 2 hours.</p></div>
+                <div class="faq__answer"><p>Most cat grooms run about 1.5–2 hours depending on the service and your cat's coat. Nail trims are much shorter.</p></div>
             </details>
             <details>
                 <summary>How much does cat grooming cost?</summary>
-                <div class="faq__answer"><p>CA$150 for short hair, CA$170 for long hair and CA$190 for a lion cut. <a href="../pricing/">See the full price list</a>.</p></div>
+                <div class="faq__answer"><p>Bath + brush + blow dry from CA$100, bath + brush + sanitary trim from CA$120, haircut / lion cut without bath from CA$140, haircut / lion cut with bath from CA$160, nail trim CA$20, and de-matting {{demattingRate}}. All prices are starting prices. <a href="../pricing/">See the full price list</a>.</p></div>
             </details>
             <details>
                 <summary>My cat is matted all over — what should I book?</summary>
-                <div class="faq__answer"><p>For heavily coated cats, the lion cut is the reset option (CA$190, 2 hours). Localized matting can be handled as mat removal from CA$120. <a href="../services/#mat-removal">Mat removal details</a>.</p></div>
+                <div class="faq__answer"><p>For heavily coated cats, the lion cut with bath is the reset option, starting at CA$160. Localized matting can be handled as de-matting {{demattingRate}} — the final charge depends on the severity of the matting and the time required. <a href="../services/#add-ons">Add-on details</a>.</p></div>
             </details>
             {{#if hasOwnerPresence}}
             <details>

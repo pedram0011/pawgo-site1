@@ -2,7 +2,7 @@
 {
   "path": "/book/",
   "title": "Book a Mobile Dog or Cat Grooming Appointment | Pawgo — Greater Vancouver",
-  "description": "How booking works at Pawgo Mobile Grooming — choose a service, secure the appointment with a $50 deposit and pay the balance by e-Transfer after the groom.",
+  "description": "How booking works at Pawgo Mobile Grooming — choose a service, secure the appointment with a $30 deposit and pay the balance by e-Transfer after the groom.",
   "nav": "book",
   "robots": "index, follow"
 }
@@ -13,13 +13,13 @@
         <p class="eyebrow">Booking</p>
         <h1>Book your pet's appointment</h1>
         <p class="lede">
-            A $50 deposit secures your booking, and the remaining balance is paid by e-Transfer once
-            the groom is complete.
+            A {{deposit}} deposit secures your booking and is applied toward the total cost of the
+            grooming service. The remaining balance is paid by e-Transfer once the groom is complete.
         </p>
         <div class="page-hero__meta">
             <span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11.5v5"/></svg>
-                $50 deposit to confirm
+                {{deposit}} deposit to confirm
             </span>
             <span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>
@@ -33,7 +33,7 @@
     <div class="container">
         <div class="note" style="max-width: 780px; margin: 0 auto 2rem">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11.5v5"/></svg>
-            <p><strong>Please note:</strong> a $50 deposit is required to secure your booking. The remaining balance can be paid via e-Transfer upon completion of the groom.</p>
+            <p><strong>Please note:</strong> a {{deposit}} deposit is required to secure your booking and is applied toward the total cost of the grooming service. The remaining balance can be paid via e-Transfer upon completion of the groom.</p>
         </div>
 
         {{#if bookingEmbedReady}}
@@ -87,9 +87,9 @@
             <div class="prose">
                 <h3>Choosing a service</h3>
                 <p>
-                    Full grooms (CA$150–CA$210) cover dogs needing a haircut; deshedding (CA$130–CA$190)
-                    suits heavy shedders; cat grooms run CA$150–CA$190. Quick visits — nail trims from
-                    CA$42 and mat removal from CA$120 — are bookable too.
+                    Dog full grooms (CA$110–CA$210) cover dogs needing a haircut; bath &amp; tidy starts
+                    at CA$85; doodle &amp; poodle full grooms start at CA$125; cat grooming starts at
+                    CA$100, with add-ons from CA$10.
                 </p>
                 <p><a class="link-arrow" href="../pricing/">Compare all prices</a></p>
 
@@ -97,6 +97,9 @@
                 <h3>Cancellation policy</h3>
                 <p>{{policyCancellation}}</p>
                 {{/if}}
+
+                <h3>Anxious, reactive or difficult dogs</h3>
+                <p>{{temperamentPolicy}}</p>
             </div>
             <div class="prose">
                 <h3>Preparing your pet</h3>
