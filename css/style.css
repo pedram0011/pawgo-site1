@@ -1046,30 +1046,29 @@ section {
     overflow: hidden;
 }
 
+/* Every service-card photo shares one 4:3 box, so all three media areas are
+   identical in size and no card jumps while its image loads. */
 .svc-card__media img {
+    display: block;
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
+    object-position: 50% 50%;
     transition: transform 0.5s ease;
 }
 
-/* Icon panel variant (used where no photograph exists yet) */
-.svc-card__media--icon {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 4 / 3;
-    background:
-        radial-gradient(240px 180px at 30% 20%, var(--blush-soft), transparent 70%),
-        radial-gradient(240px 200px at 75% 80%, var(--teal-100), transparent 70%),
-        var(--paper-alt);
-    color: var(--teal-700);
-    border-bottom: 1px solid var(--line);
+/* Per-photo framing: the source photos are portrait or 3:2, so each one is
+   cropped around the animal instead of being blindly centred. */
+.svc-card__media--full-groom img {
+    object-position: 50% 10%;
 }
 
-.svc-card__media--icon svg {
-    width: clamp(56px, 10vw, 76px);
-    height: auto;
-    opacity: 0.9;
+.svc-card__media--cat img {
+    object-position: 55% 50%;
+}
+
+.svc-card__media--bath-tidy img {
+    object-position: 50% 8%;
 }
 
 .svc-card:hover .svc-card__media img {
