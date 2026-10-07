@@ -12,12 +12,13 @@
  *   1. SITE_URL          — final production domain (NOT confirmed yet)
  *   2. BUSINESS.hours    — days of week for the confirmed 9:00 AM–7:00 PM
  *                          window (value confirmed; days drive schema only)
- *   3. BOOKING.*         — booking provider + URLs (see BOOKING block)
+ *   3. BOOKING.*         — DONE (Fresha); service-specific URLs optional later
  *   4. POLICIES.*        — late arrival, owner presence, second person
  *                          (null = omitted from the site entirely)
  * ALREADY CONFIRMED BY OWNER (2026-10-07 final update):
  *   • phone: +1 236-888-1559 (display 236-888-1559)
  *   • hours: 9:00 AM – 7:00 PM
+ *   • booking: Fresha — official direct booking link (BOOKING.mainUrl)
  *   • full price list (PRICES), $30 deposit + cancellation policy,
  *     travel-fee policy, senior-pet policy, temperament/aggression policy,
  *     pricing policy (see POLICIES / PRICE_POLICY)
@@ -79,17 +80,23 @@ const BUSINESS = {
 /**
  * BOOKING INTEGRATION LAYER
  * ──────────────────────────
- * The booking provider is NOT yet chosen (Fresha vs Groomer.io).
- * When the owner decides, fill this in using the provider's OFFICIAL
- * integration method only — do not invent iframes, widgets or APIs.
+ * Booking is handled externally by FRESHA. The site itself never shows a
+ * live booking calendar — every booking CTA simply forwards the visitor to
+ * the official Fresha booking link configured below, resolved through the
+ * {{bookingHrefMain}} / {{bookingHrefDog}} / {{bookingHrefCat}} /
+ * {{bookingMainUrl}} tokens. Never paste the URL into individual pages;
+ * change it here once and the whole site follows.
  *
- *   provider      "fresha" | "groomerio" | …   (informational)
- *   mainUrl       main booking URL
- *   dogUrl        dog-grooming booking URL (optional)
- *   catUrl        cat-grooming booking URL (optional)
+ *   provider      "fresha" (informational)
+ *   mainUrl       official Fresha booking link — used by every booking CTA
+ *   dogUrl        dog-grooming booking URL (optional; falls back to mainUrl)
+ *   catUrl        cat-grooming booking URL (optional; falls back to mainUrl)
  *   serviceUrls   per-service URLs, e.g. { "nail-trim": "https://…" }
- *   embed         official embed config ONLY if the provider supports it,
- *                 e.g. { src: "https://…", height: "820" }
+ *                 (unset slugs fall back to mainUrl)
+ *   embed         official embed config ONLY if the provider publishes one,
+ *                 e.g. { src: "https://…", height: "820" } — keep null for
+ *                 Fresha: the official direct link is used, never an iframe
+ *                 or widget invented here
  *   scripts       official external scripts the embed needs
  *                 (loaded only on /book/)
  *   ctaDestination
@@ -98,14 +105,15 @@ const BUSINESS = {
  *       "direct" buttons go straight to the provider URLs above
  */
 const BOOKING = {
-    provider: null,
-    mainUrl: null,
-    dogUrl: null,
+    provider: "fresha",
+    mainUrl:
+        "https://www.fresha.com/book-now/pawgo-mobile-grooming-np1ssn9z/all-offer?share=true&pId=3113532",
+    dogUrl: null, // no service-specific Fresha link yet — every CTA uses mainUrl
     catUrl: null,
     serviceUrls: {},
-    embed: null,
+    embed: null, // no iframe/widget — official direct booking link only
     scripts: [],
-    ctaDestination: "hub",
+    ctaDestination: "direct",
 };
 
 /**
@@ -189,7 +197,9 @@ const bookingReady = Boolean(BOOKING.provider && BOOKING.mainUrl);
 const bookingEmbedReady = bookingReady && Boolean(BOOKING.embed);
 
 /** Central target for booking CTAs — see BOOKING.ctaDestination.
- *  key: "main" | "dog" | "cat" | a serviceUrls slug */
+ *  key: "main" | "dog" | "cat" | a serviceUrls slug.
+ *  Any key without its own URL falls back to BOOKING.mainUrl, so dog, cat,
+ *  pricing, services and general CTAs all resolve to the one Fresha link. */
 function bookingHref(root, key = "main") {
     if (BOOKING.ctaDestination !== "direct") return root + "book/";
     const url =
@@ -200,7 +210,7 @@ function bookingHref(root, key = "main") {
               : key === "cat"
                 ? BOOKING.catUrl
                 : BOOKING.serviceUrls[key];
-    return url || root + "book/";
+    return url || BOOKING.mainUrl || root + "book/";
 }
 
 const BLOG_DATES = {
@@ -615,7 +625,8 @@ if (SITE_URL.includes("pawgomobilegrooming.com")) {
 if (!bookingReady) {
     console.warn(
         "⚠ Booking provider not configured yet — /book/ shows the pending state; " +
-            "fill BOOKING in build.mjs once the owner picks Fresha or Groomer.io.",
+            "fill provider + mainUrl in the BOOKING block of build.mjs with the " +
+            "provider's official booking URL.",
     );
 }
 
